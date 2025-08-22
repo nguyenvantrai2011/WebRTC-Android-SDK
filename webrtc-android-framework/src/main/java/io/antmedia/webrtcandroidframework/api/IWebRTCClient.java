@@ -370,4 +370,10 @@ public interface IWebRTCClient {
      */
     boolean isSendVideoEnabled();
 
+    /**
+     * Get current local video track
+     * @return current local video track
+     */
+    VideoTrack getLocalVideoTrack();
+
 }

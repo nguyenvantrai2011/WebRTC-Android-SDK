@@ -2873,4 +2873,8 @@ public class WebRTCClient implements IWebRTCClient, AntMediaSignallingEvents {
         this.localAudioTrack = localAudioTrack;
     }
 
+    @Override
+    public VideoTrack getLocalVideoTrack() {
+        return this.localVideoTrack;
+    }
 }
