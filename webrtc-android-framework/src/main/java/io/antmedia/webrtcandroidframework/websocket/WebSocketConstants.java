@@ -456,4 +456,8 @@ public class WebSocketConstants {
      */
     public static final String META_DATA = "metaData";
 
+    /**
+     * Update metadata command
+     */
+    public static final String UPDATE_STREAM_METADATA_COMMAND = "updateStreamMetaData";
 }

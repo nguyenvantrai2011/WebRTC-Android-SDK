@@ -376,4 +376,10 @@ public interface IWebRTCClient {
      */
     VideoTrack getLocalVideoTrack();
 
+    /**
+     * Update the stream's metadata
+     * @param streamId ID of stream
+     * @param metadata metadata will be updated
+     */
+    void updateMetadata(String streamId, String metadata);
 }

@@ -686,4 +686,16 @@ public class WebSocketHandler implements WebSocket.WebSocketConnectionObserver {
         this.wsReconnectionHandler = wsReconnectionHandler;
     }
 
+    public void updateMetadata(String streamId, String metaData) {
+        checkIfCalledOnValidThread();
+        JSONObject json = new JSONObject();
+        try {
+            json.put(WebSocketConstants.COMMAND, WebSocketConstants.UPDATE_STREAM_METADATA_COMMAND);
+            json.put(WebSocketConstants.STREAM_ID, streamId);
+            json.put(WebSocketConstants.META_DATA, metaData);
+            sendTextMessage(json.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -2877,4 +2877,11 @@ public class WebRTCClient implements IWebRTCClient, AntMediaSignallingEvents {
     public VideoTrack getLocalVideoTrack() {
         return this.localVideoTrack;
     }
+
+    @Override
+    public void updateMetadata(String streamId, String metadata) {
+        if (isWebSocketConnected()) {
+            wsHandler.updateMetadata(streamId, metadata);
+        }
+    }
 }
