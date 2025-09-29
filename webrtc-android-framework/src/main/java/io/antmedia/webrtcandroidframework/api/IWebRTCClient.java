@@ -320,6 +320,12 @@ public interface IWebRTCClient {
     void releaseRenderer(SurfaceViewRenderer renderer);
 
     /**
+     * Toggle audio for a specified participant from a VideoTrack in a call.
+     * If 'enabled' is true, unmutes that participant; otherwise, mutes that participant.
+     */
+    void toggleAudioOfTrack(VideoTrack videoTrack, boolean enabled);
+
+    /**
      * Toggle audio for all participants in a call.
      * If 'enabled' is true, unmutes all participants; otherwise, mutes all participants.
      * This method will only work for current participants. If a new participant joins, he wont be muted.

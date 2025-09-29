@@ -70,6 +70,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -2766,6 +2767,30 @@ public class WebRTCClient implements IWebRTCClient, AntMediaSignallingEvents {
 
     public void setInitiator(boolean initiator) {
         isInitiator = initiator;
+    }
+
+    @Override
+    public void toggleAudioOfTrack(VideoTrack videoTrack, boolean enabled) {
+        for (Map.Entry<String, PeerInfo> entry : peers.entrySet()) {
+            PeerInfo peerInfo = entry.getValue();
+            PeerConnection peerConnection = peerInfo.peerConnection;
+            if (peerConnection != null) {
+                List<RtpReceiver> receivers = peerConnection.getReceivers();
+                for (int i = 0; i < receivers.size(); i++) {
+                    MediaStreamTrack track = receivers.get(i).track();
+                    if (track != null && track.kind().equals("video") && Objects.equals(track.id(), videoTrack.id())) {
+                        for (int j = i+1; j < receivers.size(); j++) {
+                            MediaStreamTrack nextTrack = receivers.get(j).track();
+                            if (nextTrack != null && nextTrack.kind().equals("audio")) {
+                                AudioTrack audioTrack = (AudioTrack) nextTrack;
+                                audioTrack.setEnabled(enabled);
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public void toggleAudioOfAllParticipants(boolean enabled) {
