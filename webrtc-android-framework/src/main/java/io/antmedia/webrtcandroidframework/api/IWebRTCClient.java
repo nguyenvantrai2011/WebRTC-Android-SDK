@@ -102,6 +102,15 @@ public interface IWebRTCClient {
     void join(String streamId);
 
     /**
+     * This is used to ONLY join a conference room.
+     * Other methods with streamId: join room & publish
+     *
+     * @param roomId:   id for the conference room
+     * @param streamId: id for the participant
+     */
+    void onlyJoinToConferenceRoom(String roomId, String streamId);
+
+    /**
      * This is used to join a conference room
      *
      * @param roomId:   id for the conference room

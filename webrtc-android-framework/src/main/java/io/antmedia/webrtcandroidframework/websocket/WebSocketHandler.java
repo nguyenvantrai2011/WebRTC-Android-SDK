@@ -604,6 +604,20 @@ public class WebSocketHandler implements WebSocket.WebSocketConnectionObserver {
         }
     }
 
+    public void joinRoom(String roomName, String streamId) {
+        checkIfCalledOnValidThread();
+        JSONObject json = new JSONObject();
+        try {
+            json.put(WebSocketConstants.COMMAND, WebSocketConstants.JOIN_ROOM_COMMAND);
+            json.put(WebSocketConstants.ROOM, roomName);
+            json.put(WebSocketConstants.MAIN_TRACK, roomName);
+            json.put(WebSocketConstants.STREAM_ID, streamId);
+            sendTextMessage(json.toString());
+        } catch (JSONException e) {
+            Log.e(TAG, "Connect to conference room JSON error: " + e.getMessage());
+        }
+    }
+
     public void leaveFromTheConferenceRoom(String roomName) {
         checkIfCalledOnValidThread();
         JSONObject json = new JSONObject();

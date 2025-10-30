@@ -441,6 +441,14 @@ public class WebRTCClient implements IWebRTCClient, AntMediaSignallingEvents {
                 null);
     }
 
+    @Override
+    public void onlyJoinToConferenceRoom(String roomId, String streamId) {
+        this.roomId = roomId;
+        if (wsHandler != null && wsHandler.isConnected()) {
+            wsHandler.joinRoom(roomId, streamId);
+        }
+    }
+
     public void joinToConferenceRoom(String roomId, String streamId, boolean videoCallEnabled, boolean audioCallEnabled, String token, String subscriberId, String subscriberCode, String streamName, String metaData) {
 
         this.roomId = roomId;
