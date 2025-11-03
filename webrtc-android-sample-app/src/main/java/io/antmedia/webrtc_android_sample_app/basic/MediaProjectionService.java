@@ -75,7 +75,7 @@ public class MediaProjectionService extends Service {
     private Notification createNotification() {
         Notification.Builder notificationBuilder = new Notification.Builder(this, CHANNEL_ID);
         notificationBuilder.setContentTitle("Ant Media Server WebRTC Publish");
-        notificationBuilder.setSmallIcon(R.drawable.ic_launcher);
+        notificationBuilder.setSmallIcon(R.mipmap.ic_launcher);
         notificationBuilder.addAction(createStopAction());
         return notificationBuilder.build();
     }
