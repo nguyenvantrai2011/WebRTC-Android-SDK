@@ -263,4 +263,14 @@ public interface IWebRTCListener {
   * It's called when Subscriber List received.
   */
  void onSubscriberList(String streamId, Subscriber[] subscribers);
+
+    /**
+     * It's called when the notification is received from the server with the definition is 'subtrackAdded'
+     */
+    void onSubtrackAdded(String trackId, String mainTrackId);
+
+    /**
+     * It's called when the notification is received from the server with the definition is 'subtrackRemoved'
+     */
+    void onSubtrackRemoved(String trackId, String mainTrackId);
 }

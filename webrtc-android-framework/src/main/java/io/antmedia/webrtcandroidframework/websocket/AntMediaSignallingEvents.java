@@ -166,4 +166,18 @@ public interface AntMediaSignallingEvents {
      * @param subscribers subscriber array
      */
     void onSubscriberList(String streamId, Subscriber[] subscribers);
+
+    /**
+     * It's called when the notification is received from the server with the definition is 'subtrackAdded'
+     * @param trackId Track Id
+     * @param mainTrackId Main track Id
+     */
+    void onSubtrackAdded(String trackId, String mainTrackId);
+
+    /**
+     * It's called when the notification is received from the server with the definition is 'subtrackRemoved'
+     * @param trackId Track Id
+     * @param mainTrackId Main track Id
+     */
+    void onSubtrackRemoved(String trackId, String mainTrackId);
 }

@@ -2969,4 +2969,22 @@ public class WebRTCClient implements IWebRTCClient, AntMediaSignallingEvents {
             wsHandler.getDebugInfo(streamId);
         }
     }
+
+    @Override
+    public void onSubtrackAdded(String trackId, String mainTrackId) {
+        this.handler.post(() -> {
+            if (config.webRTCListener != null) {
+                config.webRTCListener.onSubtrackAdded(trackId, mainTrackId);
+            }
+        });
+    }
+
+    @Override
+    public void onSubtrackRemoved(String trackId, String mainTrackId) {
+        this.handler.post(() -> {
+            if (config.webRTCListener != null) {
+                config.webRTCListener.onSubtrackRemoved(trackId, mainTrackId);
+            }
+        });
+    }
 }

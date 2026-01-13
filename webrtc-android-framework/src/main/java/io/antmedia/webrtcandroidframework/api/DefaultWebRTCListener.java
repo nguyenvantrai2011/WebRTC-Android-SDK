@@ -293,4 +293,16 @@ public class DefaultWebRTCListener implements IWebRTCListener {
         callbackCalled(messageText);
     }
 
+    @Override
+    public void onSubtrackAdded(String trackId, String mainTrackId) {
+        String messageText = "On subtrack added " + trackId + " to " + mainTrackId;
+        callbackCalled(messageText);
+    }
+
+    @Override
+    public void onSubtrackRemoved(String trackId, String mainTrackId) {
+        String messageText = "On subtrack removed " + trackId + " from " + mainTrackId;
+        callbackCalled(messageText);
+    }
+
 }

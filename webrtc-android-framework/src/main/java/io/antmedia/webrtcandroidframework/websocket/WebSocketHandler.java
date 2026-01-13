@@ -297,6 +297,28 @@ public class WebSocketHandler implements WebSocket.WebSocketConnectionObserver {
                     }
                     signallingListener.onSubscriberList(streamId, subscribers);
                 }
+                else if (definition.equals(WebSocketConstants.SUBTRACK_ADDED)) {
+                    String trackId = null;
+                    if (json.has(WebSocketConstants.TRACK_ID)) {
+                        trackId = json.getString(WebSocketConstants.TRACK_ID);
+                    }
+                    String mainTrack = null;
+                    if (json.has(WebSocketConstants.MAIN_TRACK)) {
+                        mainTrack = json.getString(WebSocketConstants.MAIN_TRACK);
+                    }
+                    signallingListener.onSubtrackAdded(trackId, mainTrack);
+                }
+                else if (definition.equals(WebSocketConstants.SUBTRACK_REMOVED)) {
+                    String trackId = null;
+                    if (json.has(WebSocketConstants.TRACK_ID)) {
+                        trackId = json.getString(WebSocketConstants.TRACK_ID);
+                    }
+                    String mainTrack = null;
+                    if (json.has(WebSocketConstants.MAIN_TRACK)) {
+                        mainTrack = json.getString(WebSocketConstants.MAIN_TRACK);
+                    }
+                    signallingListener.onSubtrackRemoved(trackId, mainTrack);
+                }
             }
             else if (commandText.equals(WebSocketConstants.TRACK_LIST)) {
                 JSONArray trackList = json.getJSONArray(WebSocketConstants.TRACK_LIST);
