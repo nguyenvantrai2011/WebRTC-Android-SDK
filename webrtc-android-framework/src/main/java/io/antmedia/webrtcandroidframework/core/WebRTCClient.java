@@ -1253,6 +1253,12 @@ public class WebRTCClient implements IWebRTCClient, AntMediaSignallingEvents {
         return wsHandler.isConnected();
     }
 
+    public void forceReconnectWebsocket() {
+        if (wsHandler == null) return;
+        wsHandler.disconnect(true);
+        wsHandler.connect(config.serverUrl);
+    }
+
     public void releaseRenderer(SurfaceViewRenderer renderer) {
         releaseRenderer(renderer, null, null);
     }

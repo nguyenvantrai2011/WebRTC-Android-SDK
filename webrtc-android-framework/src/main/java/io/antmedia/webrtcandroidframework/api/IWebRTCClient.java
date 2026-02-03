@@ -427,4 +427,9 @@ public interface IWebRTCClient {
      * @param streamId: id for the broadcast
      */
     void getDebugInfo(String streamId);
+
+    /**
+     * Called to force reconnect websocket
+     */
+    void forceReconnectWebsocket();
 }
